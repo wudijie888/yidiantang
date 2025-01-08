@@ -31,7 +31,6 @@ android {
 
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
-        options.release = 21 // 指定编译时的目标版本
     }
 
     buildFeatures {
