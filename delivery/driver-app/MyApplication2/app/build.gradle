@@ -14,6 +14,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // 设置 Java 版本
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_21
+            targetCompatibility JavaVersion.VERSION_21
+        }
     }
 
     buildTypes {
@@ -22,10 +28,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+        options.release = 21 // 指定编译时的目标版本
     }
+
     buildFeatures {
         viewBinding true
     }
@@ -39,8 +47,8 @@ dependencies {
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
     
-    // 高德地图SDK
-    implementation 'com.amap.api:3dmap:latest.integration'
-    implementation 'com.amap.api:location:latest.integration'
-    implementation 'com.amap.api:search:latest.integration'
+    // 高德地图SDK - 使用明确的版本号代替 'latest.integration'
+    implementation 'com.amap.api:3dmap:9.6.0' // 替换为最新的稳定版本号
+    implementation 'com.amap.api:location:5.7.0' // 替换为最新的稳定版本号
+    implementation 'com.amap.api:search:8.6.0' // 替换为最新的稳定版本号
 }
